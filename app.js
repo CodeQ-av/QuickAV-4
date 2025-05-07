@@ -85,6 +85,7 @@ function successPageTemplate(url, qrCode, filename) {
   return `
     <head>
       <title>QuickAV - Upload Successful</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://cdn.tailwindcss.com"></script>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
       <style>
@@ -94,45 +95,45 @@ function successPageTemplate(url, qrCode, filename) {
     </head>
     <body class="bg-gray-50 min-h-screen flex flex-col">
       ${header()}
-      <main class="flex-grow container mx-auto px-4 py-12">
-        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-8">
-          <div class="text-center mb-8">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <main class="flex-grow container mx-auto px-4 py-8 sm:py-12">
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6 sm:p-8">
+          <div class="text-center mb-6 sm:mb-8">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <svg class="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">Upload Successful!</h1>
-            <p class="text-gray-600">Your file is now available at:</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Upload Successful!</h1>
+            <p class="text-gray-600 text-sm sm:text-base">Your file is now available at:</p>
           </div>
           
-          <div class="mb-8">
-            <div class="flex items-center justify-between bg-gray-100 rounded-lg p-4 mb-4">
-              <p class="truncate text-sm font-medium text-gray-700">${filename}</p>
+          <div class="mb-6 sm:mb-8">
+            <div class="flex items-center justify-between bg-gray-100 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
+              <p class="truncate text-xs sm:text-sm font-medium text-gray-700">${filename}</p>
             </div>
             
-            <div class="bg-gray-100 rounded-lg p-4 mb-6">
-              <p class="text-sm font-medium text-gray-500 mb-1">Shareable Link</p>
-              <div class="flex">
+            <div class="bg-gray-100 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+              <p class="text-xs sm:text-sm font-medium text-gray-500 mb-1">Shareable Link</p>
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-0">
                 <input id="fileUrl" type="text" value="${url}" readonly 
-                  class="flex-grow bg-white border border-gray-300 rounded-l-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  class="flex-grow bg-white border border-gray-300 rounded-lg sm:rounded-l-lg sm:rounded-r-none px-3 sm:px-4 py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button onclick="copyToClipboard()" 
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg text-sm font-medium transition-colors">
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none text-xs sm:text-sm font-medium transition-colors">
                   Copy
                 </button>
               </div>
             </div>
             
             <div class="text-center">
-              <p class="text-sm font-medium text-gray-500 mb-4">Scan QR Code to access file</p>
+              <p class="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4">Scan QR Code to access file</p>
               <div class="flex justify-center">
-                <img src="${qrCode}" alt="QR Code" class="w-48 h-48 border-4 border-white shadow-lg rounded-lg">
+                <img src="${qrCode}" alt="QR Code" class="w-40 h-40 sm:w-48 sm:h-48 border-4 border-white shadow-lg rounded-lg">
               </div>
             </div>
           </div>
           
           <div class="flex justify-center">
-            <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-medium transition-colors">
               Upload Another File
             </a>
           </div>
@@ -152,27 +153,28 @@ function successPageTemplate(url, qrCode, filename) {
 }
 
 function header() {
-return `
+  return `
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-4 flex justify-center items-center">
-            <a href="/" class="flex items-center">
-                <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 gradient-text">QuickAV</span>
-            </a>
-        </div>
+      <div class="container mx-auto px-4 py-3 sm:py-4 flex justify-center items-center">
+        <a href="/" class="flex items-center">
+          <span class="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 gradient-text">QuickAV</span>
+        </a>
+      </div>
     </header>
-`;
+  `;
 }
 
 function footer() {
   return `
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-800 text-white py-6 sm:py-8">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="mb-4 md:mb-0">
-            <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 gradient-text">QuickAV</span>
-            <p class="text-gray-400 mt-2">Fast and secure file sharing</p>
+            <span class="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 gradient-text">QuickAV</span>
+            <p class="text-gray-400 mt-1 sm:mt-2 text-xs sm:text-sm">Fast and secure file sharing</p>
+          </div>
         </div>
-        <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+        <div class="border-t border-gray-700 mt-4 sm:mt-6 pt-4 sm:pt-6 text-center text-gray-400 text-xs sm:text-sm">
           <p>© ${new Date().getFullYear()} QuickAV. All rights reserved.</p>
         </div>
       </div>
