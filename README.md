@@ -4,7 +4,7 @@
 
 QuickAV is a lightning-fast file sharing service that allows you to upload files and share them instantly via links or QR codes.
 
-🔗 **Live Demo**: [QuickAv](https://quickav.onrender.com/upload)
+🔗 **Live Demo**: [Quick AV](https://quickav.onrender.com/upload)
 
 ## Features
 
